@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Sauce: https://mjones44.medium.com/storing-dotfiles-in-a-git-repository-53f765c0005d
+
+REPO="git@github.com:AndOrangutan/bareback.git"
+DOTDIR="$HOME/.bareback"
+BACKDIR="$HOME/.bareback-backup"
+
+# Clone repo and enter it
+git clone --bare $REPO 
+$HOME/.dotfiles
+
+# Define bareback alias locally since the dotfiles  aren't installed on the system yet
+function bareback {
+    git --git-dir=$DOTDIR --work-tree=$HOME $@
+}
+
+# Create a directory to backup existing dotfiles to
+mkdir -p .bareback-backup
+bareback checkout
+if [ $? = 0 ]; then
+    echo "Checked out dotfiles from $REPO"
+else
+    echo "Moving existing dotfiles to $BACKDIR"
+    bareback checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -r{} mv {} .bareback-backup/{}
+fi
+
+# Checkout dotfiles from repo
+bareback checkout 
+bareback config status.showUntrackedFiles no
