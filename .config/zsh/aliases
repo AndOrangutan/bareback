@@ -6,6 +6,12 @@ alias nv='nvim'
 # Important
 alias ssh='kitty +kitten ssh'                               # Make ssh work with kitty.
 
+# bareback
+
+alias bareback='/usr/bin/git --git-dir=$HOME/.bareback --work-tree=$HOME'
+alias bb='/usr/bin/git --git-dir=$HOME/.bareback --work-tree=$HOME'
+alias bblg='/usr/bin/lazygit --git-dir=$HOME/.bareback --work-tree=$HOME'
+
 # make ls colorful with icons
 alias ls='lsd'
 

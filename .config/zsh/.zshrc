@@ -60,9 +60,10 @@ zle -N down-line-or-beginning-search
 ##################
 # bareback setup #
 ##################
-alias bareback='/usr/bin/git --git-dir=$HOME/.bareback --work-tree=$HOME'
-alias bb='/usr/bin/git --git-dir=$HOME/.bareback --work-tree=$HOME'
-alias bblg='/usr/bin/lazygit --git-dir=$HOME/.bareback --work-tree=$HOME'
+#alias bareback='/usr/bin/git --git-dir=$HOME/.bareback --work-tree=$HOME'
+#alias bb='/usr/bin/git --git-dir=$HOME/.bareback --work-tree=$HOME'
+#alias bblg='/usr/bin/lazygit --git-dir=$HOME/.bareback --work-tree=$HOME'
+# Moved to alias
 
 ################################
 # Edit line in vim with ctrl+e #
